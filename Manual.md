@@ -369,6 +369,8 @@ in this directory such as `${XBPS_BUILDDIR}/${wrksrc}`.
 
 - `XBPS_WORDSIZE` The machine's word size in bits (32 or 64).
 
+- `XBPS_NO_ATOMIC8` The machine lacks native 64-bit atomics (needs libatomic emulation).
+
 - `XBPS_SRCDISTDIR` Full path to where the `source distfiles` are stored, i.e `$XBPS_HOSTDIR/sources`.
 
 - `XBPS_SRCPKGDIR` Full path to the `srcpkgs` directory.
@@ -380,6 +382,8 @@ in this directory such as `${XBPS_BUILDDIR}/${wrksrc}`.
 - `XBPS_TARGET_LIBC` The target machine's C library ("glibc" or "musl").
 
 - `XBPS_TARGET_WORDSIZE` The target machine's word size in bits (32 or 64).
+
+- `XBPS_TARGET_NO_ATOMIC8` The target machine lacks native 64-bit atomics (needs libatomic emulation).
 
 - `XBPS_FETCH_CMD` The utility to fetch files from `ftp`, `http` of `https` servers.
 
@@ -896,8 +900,7 @@ Additional install arguments can be specified via `make_install_args`.
 - `perl-module` For packages that use the Perl
 [ExtUtils::MakeMaker](http://perldoc.perl.org/ExtUtils/MakeMaker.html) build method.
 
-- `perl6-dist` For packages that use the Rakudo Perl 6
-`perl6-install-dist` build method with rakudo.
+- `raku-dist` For packages that use the Raku `raku-install-dist` build method with rakudo.
 
 - `waf3` For packages that use the Python3 `waf` build method with python3.
 
