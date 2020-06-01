@@ -1,6 +1,6 @@
 # Template file for 'marble5'
 pkgname=marble5
-version=19.12.1
+version=20.04.1
 revision=1
 wrksrc="marble-${version}"
 build_style=cmake
@@ -14,7 +14,7 @@ maintainer="Piotr Wójcik <chocimier@tlen.pl>"
 license="LGPL-2.1-or-later, GFDL-1.2-only"
 homepage="https://marble.kde.org"
 distfiles="${KDE_SITE}/release-service/${version}/src/marble-${version}.tar.xz"
-checksum=46ec0dcab4773ccfb843ae52881ae833b038a00b7690977a2e721099264dc8dd
+checksum=28cdf7161e8f3a2f00fd35cc4a384e29e7875c7177c27ff6d5dd8f8f53bcaa67
 
 pre_configure() {
 	vsed -i CMakeLists.txt -e 's/-Wcast-align//'

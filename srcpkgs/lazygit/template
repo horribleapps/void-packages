@@ -1,6 +1,6 @@
 # Template file for 'lazygit'
 pkgname=lazygit
-version=0.14
+version=0.20.4
 revision=1
 build_style=go
 go_import_path=github.com/jesseduffield/lazygit
@@ -11,7 +11,7 @@ maintainer="Nathan Owens <ndowens04@gmail.com>"
 license="MIT"
 homepage="https://github.com/jesseduffield/lazygit"
 distfiles="https://github.com/jesseduffield/lazygit/archive/v${version}.tar.gz"
-checksum=c63f699361c0cfc281bb8414350a47b74cea910f877785f7f3a63137812e985b
+checksum=8af316bf9d0916e8b19ce590a80664314a38652af9ef115083686bc9720fa7b9
 
 post_install() {
 	vlicense LICENSE

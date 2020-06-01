@@ -1,6 +1,6 @@
 # Template file for 'kcmutils'
 pkgname=kcmutils
-version=5.66.0
+version=5.70.0
 revision=1
 build_style=cmake
 configure_args="-DBUILD_TESTING=OFF"
@@ -12,7 +12,7 @@ maintainer="John <johnz@posteo.net>"
 license="LGPL-2.0-or-later, LGPL-2.0-only"
 homepage="https://projects.kde.org/projects/frameworks/kcmutils"
 distfiles="${KDE_SITE}/frameworks/${version%.*}/${pkgname}-${version}.tar.xz"
-checksum=e02dbf996ed93bdc2813a2a64dcb0ddeb54987dd84bbe787bd890b17d57e4a85
+checksum=bfc6a8e8d420c276474805949b8f4ab0c298b8de70827b6f0b342f434af6c421
 
 kcmutils-devel_package() {
 	short_desc+=" - development"

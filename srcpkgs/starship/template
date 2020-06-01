@@ -1,6 +1,6 @@
 # Template file for 'starship'
 pkgname=starship
-version=0.33.1
+version=0.41.0
 revision=1
 build_style=cargo
 build_helper="rust"
@@ -11,11 +11,7 @@ maintainer="Aluísio Augusto Silva Gonçalves <aluisio@aasg.name>"
 license="ISC"
 homepage="https://starship.rs"
 distfiles="https://github.com/starship/starship/archive/v${version}.tar.gz"
-checksum=90e1f2e795cd0e694d7a514faeee19f881c35ec46811298adde692d606837d5d
-
-case "$XBPS_TARGET_MACHINE" in
-	ppc*) broken="ftbfs in ring";;
-esac
+checksum=420a09f77a6355bb0f272cd45be57d89265357b4e98b88e212aba7720d270fe7
 
 post_install() {
 	vlicense LICENSE

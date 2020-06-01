@@ -1,9 +1,9 @@
 # Template file for 'protonvpn-cli'
 pkgname=protonvpn-cli
-version=2.2.1
+version=2.2.2
 revision=1
 archs=noarch
-wrksrc="${pkgname}-ng-${version}"
+wrksrc="linux-cli-${version}"
 build_style=python3-module
 hostmakedepends="python3-setuptools"
 makedepends="python3-devel"
@@ -11,6 +11,6 @@ depends="openvpn python3-pythondialog python3-docopt python3-requests"
 short_desc="Linux command-line client for ProtonVPN written in Python"
 maintainer="svenper <svenper@tuta.io>"
 license="GPL-3.0-or-later"
-homepage="https://github.com/ProtonVPN/protonvpn-cli-ng"
-distfiles="https://github.com/ProtonVPN/protonvpn-cli-ng/archive/v${version}.tar.gz"
-checksum=0369091c3d2b5d28c20ab2df1853eca17f680041d17c60547100be46d652a2ed
+homepage="https://github.com/ProtonVPN/linux-cli"
+distfiles="https://github.com/ProtonVPN/linux-cli/archive/v${version}.tar.gz"
+checksum=7d4d8c10e8c05626a17bfc901b287b847944ae1c0d09859ef6c3992c924a114f

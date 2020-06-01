@@ -1,5 +1,5 @@
 # Template file for 'google-chrome'
-_chromeVersion=80.0.3987.87
+_chromeVersion=83.0.4103.61
 _chromeRevision=1
 _channel=stable
 
@@ -19,10 +19,10 @@ nostrip=yes
 _baseUrl="https://dl.google.com/linux/chrome/deb/pool/main/g/google-chrome-stable"
 _filename="google-chrome-${_channel}_${_chromeVersion}-${_chromeRevision}_amd64.deb"
 _chromeUrl="${_baseUrl}/${_filename}"
-_licenseUrl="https://www.google.com/intl/en/chrome/privacy/eula_text.html"
+_licenseUrl="https://www.google.com/intl/en/chrome/terms"
 
 distfiles="$_chromeUrl"
-checksum=85e07dee624d3c7eec6a6194efcb070b353ee52c0e5980517760230128a3ba61
+checksum=adba3364137bfd377a590ba7256052f59faf34be6ff36e3d3d4ac467a60a51f2
 
 do_extract() {
 	mkdir -p ${DESTDIR}

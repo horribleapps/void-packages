@@ -1,21 +1,22 @@
 # Template file for 'intellij-idea-ultimate-edition'
 pkgname=intellij-idea-ultimate-edition
-version=2019.3.2
+version=2020.1.1
 revision=1
 archs="i686 x86_64"
-wrksrc="idea-IU-193.6015.39"
+wrksrc="idea-IU-201.7223.91"
 depends="giflib libXtst jetbrains-jdk-bin"
 short_desc="Most intelligent Java IDE"
 maintainer="Anton Afanasyev <anton@doubleasoftware.com>"
 license="custom:Commercial"
 homepage="https://www.jetbrains.com/idea"
 distfiles="https://download.jetbrains.com/idea/ideaIU-${version}-no-jbr.tar.gz"
-checksum=1f0607e1425a492fe5569421ae684092267d78828a1f26b3e224f5f94e6b8f26
+checksum=0e828f5f6a58287bf4913be72ec663117e7b0a6fba92631bbb1589eb0e93708e
 repository=nonfree
 restricted=yes
 nopie=yes
 # JetBrains' tools are self-sufficient and while they include code that appears to be linked to libs from other packages, these libs are either included in the tool package, or the code works by looking for one of several supported libs.
 noverifyrdeps=yes
+python_version=3
 
 post_extract() {
 	# Remove files for other OSes
@@ -57,8 +58,6 @@ do_install() {
 	# Ideally vlicense should be called here, but vcopy is more terse.
 	vcopy license/* ${LICENSE_PATH}
 
-	mkdir -p /usr/lib/jvm/jbrsdk
-	ln -sf /usr/lib/jvm/jbrsdk ${DESTDIR}/${TARGET_PATH}/jbr
 	vcopy bin ${TARGET_PATH}
 	vcopy help ${TARGET_PATH}
 	vcopy lib ${TARGET_PATH}

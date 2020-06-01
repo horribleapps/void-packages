@@ -1,9 +1,8 @@
 # Template file for 'kparts'
 pkgname=kparts
-version=5.66.0
+version=5.70.0
 revision=1
 build_style=cmake
-configure_args="-DBUILD_TESTING=OFF"
 hostmakedepends="kcoreaddons extra-cmake-modules gettext
  qt5-host-tools qt5-qmake python3"
 makedepends="kio-devel"
@@ -12,7 +11,11 @@ maintainer="John <johnz@posteo.net>"
 license="LGPL-2.1-or-later"
 homepage="https://projects.kde.org/projects/frameworks/kparts"
 distfiles="${KDE_SITE}/frameworks/${version%.*}/${pkgname}-${version}.tar.xz"
-checksum=6de2395cd6a9993f216f4dc4718f352bc4cbbd8147734c76be0e1e6149f733d0
+checksum=533f41d1a37122aab73feec9014e362b2aa345903af0de7e973a7f5350eecabd
+
+pre_check() {
+	export QT_QPA_PLATFORM=offscreen
+}
 
 kparts-devel_package() {
 	short_desc+=" - development"

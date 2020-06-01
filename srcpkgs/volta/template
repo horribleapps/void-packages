@@ -1,6 +1,6 @@
 # Template file for 'volta'
 pkgname=volta
-version=0.7.1
+version=0.8.1
 revision=1
 archs="x86_64 i686" # Due to volta pulling pre-built binaries later. Evil.
 build_helper="rust"
@@ -11,10 +11,10 @@ maintainer="Alex Lohr <alex.lohr@logmein.com>"
 license="BSD-2-Clause"
 homepage="https://volta.sh/"
 distfiles="https://github.com/volta-cli/volta/archive/v${version}.tar.gz"
-checksum=e53a07e167bb64103f36901423f5a377a2ea89ecfdd7a1343e69d659f99f9c1b
+checksum=b60ce05b27aa5b94e5b40470a623a849daa335be3a00b1eb36cbbafa2b044842
 
 pre_build() {
-	cargo update --package openssl-sys --precise 0.9.53
+	cargo update --package openssl-sys --precise 0.9.55
 }
 
 do_build() {

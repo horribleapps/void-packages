@@ -1,21 +1,20 @@
 # Template file for 'bcc'
 pkgname=bcc
-version=0.12.0
-revision=2
+version=0.14.0
+revision=1
 wrksrc="bcc"
 build_style=cmake
 configure_args="-DREVISION=${version}"
-hostmakedepends="flex"
-makedepends="clang elfutils-devel lld-devel llvm ncurses-devel
- python3-devel zlib-devel"
-python_version="3"
+hostmakedepends="flex python3"
+makedepends="clang clang-tools-extra elfutils-devel flex lld-devel llvm
+ ncurses-devel python3-devel zlib-devel"
 short_desc="BPF-based Linux IO analysis, networking, monitoring, and more"
 maintainer="Leah Neukirchen <leah@vuxu.org>"
 license="Apache-2.0"
 homepage="https://github.com/iovisor/bcc"
 distfiles="https://github.com/iovisor/bcc/releases/download/v${version}/bcc-src-with-submodule.tar.gz"
-checksum=a7acf0e7a9d3ca03a91f22590e695655a5f0ccf8e3dc29e454c2e4c5d476d8aa
-nocross=yes # https://github.com/voidlinux/void-packages/issues/4738
+checksum=77b88e1afba12585a270ce216ec1e6c0770c1cacb768150cf7d219b0e21280c3
+python_version="3"
 
 post_extract() {
 	sed -i '/tests/d' CMakeLists.txt  # break on musl
@@ -57,7 +56,6 @@ python3-bcc_package() {
 	depends="python3"
 	short_desc+=" - Python 3 module"
 	depends="${sourcepkg}>=${version}_${revision}"
-	pycompile_module="bcc"
 	pkg_install() {
 		vmove "usr/lib/python*"
 	}

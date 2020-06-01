@@ -4,31 +4,32 @@
 # Permission to use rust and cargo trademark is granted.
 # See: https://github.com/rust-lang/core-team/issues/4
 pkgname=rust
-version=1.40.0
+version=1.43.1
 revision=1
-_rust_dist_version=1.39.0
-_cargo_dist_version=0.40.0
+_rust_dist_version=1.43.1
+_cargo_dist_version=0.44.0
 # Always make sure custom distfiles used for bootstrap are
 # uploaded to https://alpha.de.repo.voidlinux.org/distfiles/
 wrksrc="rustc-${version}-src"
 hostmakedepends="cmake curl pkg-config python3 tar"
-makedepends="libffi-devel ncurses-devel libxml2-devel zlib-devel llvm"
+makedepends="libffi-devel ncurses-devel libxml2-devel zlib-devel llvm10"
 depends="rust-std"
 short_desc="Safe, concurrent, practical systems language"
 maintainer="Enno Boland <gottox@voidlinux.org>"
 license="MIT, Apache-2.0"
 homepage="https://www.rust-lang.org/"
 distfiles="https://static.rust-lang.org/dist/rustc-${version}-src.tar.gz"
-checksum=dd97005578defc10a482bff3e4e728350d2099c60ffcf1f5e189540c39a549ad
+checksum=cde177b4a8c687da96f20de27630a1eb55c9d146a15e4c900d5c31cd3c3ac41d
 lib32disabled=yes
 patch_args="-Np1"
 
-build_options="static_llvm"
+build_options="bindist"
+desc_option_bindist="Generate tarballs for bootstrap"
 
 _bootstrap_dir="stage0-bootstrap"
 
 if [ "$CROSS_BUILD" ]; then
-	hostmakedepends+=" cargo llvm"
+	hostmakedepends+=" cargo llvm10"
 	# These are required for building the buildhost's stage0/1
 	hostmakedepends+=" libffi-devel libxml2-devel ncurses-devel zlib-devel"
 else
@@ -50,57 +51,57 @@ else
 	case "$XBPS_MACHINE" in
 		i686)
 			checksum+="
-			 cb2e8afccfdc7e32fdbb1e106e3cedb0bd4ba1a6f060417f41c1e35a9ac8968d
-			 e108d2f3ba7f5986e08cd7f2b295110243d1b715d5722d276aad7b0469418626
-			 d2a7ab28f0ff82a482ff24425f844b917a74059dbce550a96f0ab9fe1c131ef9"
+			 b415a406443cafa85e426d56d02fb52231b8d78ad1fec33b79b757d8ef4ed64c
+			 9913d3e21efc13445e3b71f6e1103c63b130544e1f28a99a0bb642276ebca985
+			 c7b4045b2001be2e97b0b08dfaee02097aea0e8a9983b42585d733cfa1e69683"
 			;;
 		x86_64)
 			checksum+="
-			 5b2a435a4c034615d70cfc383abe9924cbd1ffd4669caa55ce6539f22ed979ed
-			 b629952ec9e3e750137d7b8a922de145c97c1dc372dd616e86e4e501da13910b
-			 7b9ba52c252964724f49aab49e42bec62fca929297ef058412c7e727b0794620"
+			 a18b89572ff2e55eb9e0428efcdb60eacd82fe28c4d825d169b0ffc9e3c55ceb
+			 dabc62db53c2e7ffeba2824d4c52a938486b04c01a93ecba00c5d529868f6cfc
+			 84ba23058542691dae8157beec6a7679a420643eb6a708134bb1dfb01cbdebea"
 			;;
 		x86_64-musl)
 			checksum+="
-			 bd3e2964d171eafc95668f675b521669b89abc32129214bb4c3b2509e4c66247
-			 4ac886aab08eae7c67edc0be3ffd808a0a6fa599b9aa52f52f0a48fdb8b56435
-			 9c17f3f43c77e3cf002b3b54f871718b0a4fca30e83dca0a76a037d4943806c7"
+			 be982dc01b5c86a3f2b0b99a2ca0e13b3cea698ee6f1db9fa024de5c8b35a75d
+			 f3b55147ff6e01448699eaf0875d7956ea38eeef42a19cda9d555e814470e823
+			 653cb60214d6f1000c9a7775111dccd093c0118e7f7bf5f2f1f53a7e5e2420b3"
 			;;
 		ppc64le)
 			checksum+="
-			 542d2bd00f1af6b2108e052b8f9cfd7afdf787d47b313d7b67d8dcd3bfafe96c
-			 e4ad2ed0a6de954788d27355a1f178000735bf2b7120f2aa3af49839ab405f16
-			 e420f7078262bd0735c6d368e0e46b064ea39fdbc86690932b86274616e838e6"
+			 8fd21a9eac7e27a5f7af9d9357455d1ff5aef01d84b4025a773caaae6e0a6db7
+			 235bdaf836a0bd139257d6cc0566e0c3d4d1e07c04304ed9a8d200299aaa4a48
+			 4f90cd6cbcf9e9d6ba11830e093092e4e6c3d156ffde2e729933869b7a039ff9"
 			;;
 		ppc64le-musl)
 			checksum+="
-			 aeb989553eb6b1e8a7473369d491c1ac4ff27a553743f19a042d759b1cbfbad9
-			 d7bf5bab6cd80d387fa1b9d41dd5a5825fc5de520048cc89a8d621760c44e6df
-			 e930b7da1f3ae1e0d3568c06cd4cc5f68a61813a8c53adf0e97d9592f3e3425e"
+			 2c32096c0f1b3a756cc29d6ecaf89296148a7a99d43baa0141bee490b353b502
+			 fa87695bdede026b031010716fafbe2890cbff00acc3042fd372dd7cc5eb46a7
+			 a85e8c9714a8bb7c17cd23993c677f51d9e0d6f5e85ab10f53ec1639b19bbbd4"
 			;;
 		ppc64)
 			checksum+="
-			 fa5fe636f502cd5a6af97281656dba59295d76e91158c19b59d6a970987fce8f
-			 74f5deadb1052abf5475b3d7b204101a52337a89867daf3efde2adcd8dee78b2
-			 d516be75b7cde33aa69db1e4fd99b222b868df3f642dada3bfed34d1db585380"
+			 4aa250cd14553ae3a438cd7a7290a79b899d1fbec9fc60985bbce070b500883e
+			 2cd6e88be42db44338c18fa6e3170ffea679ee73825826112cdbf6dd9ed0619a
+			 983e2fbec9c4bfe66bab37ad64cdd5b47918378e421d9bf639e938f120650199"
 			;;
 		ppc64-musl)
 			checksum+="
-			 f1fd45b8570bff03e22c70dcfc8cfa6e7657ab41ce082687f4bd294e08dad152
-			 c3455841abfb9e59ae0709fe5f0fa171212e8628bf464214734eafb46f97c4c2
-			 af226341d50cebc5af608375b6b200a1c10e14139812dc77a928140fe5120be9"
+			 f3c4fb775e63248914fece31199312dd2f69660f10b696ebbc56d41d4bc4ac2c
+			 c3d580c71e5a716056347513588d4445bdb8225e2ee5d9f2cf87c5bb4357bcb1
+			 f974893d1cac6c799345bece08c7f796eb50e1a77c4b9bc2a6451d161a57c660"
 			;;
 		ppc)
 			checksum+="
-			 ed91f1e60b56e6bd09b003fda0aef5b99e014663033f3b2ede44a51e5b574b13
-			 2cb595dd95d5f557b3d36006ce6fe283f324e721ad8f92e1f7772cc261787cae
-			 a2a64bba73102caadf819dd268f5710c978ece0efa05aaa89cbae45a5443e880"
+			 109d6af5d05cfbde5a476d07cf8b3093a974b0c76922bf8cd1046c5e11f5caaa
+			 a90152808c82f863f3c14647ebfbb6ae66d065ea4577be1036f6dc229c1e7e89
+			 48f4419300fe758ebe024e6449a5ca1dff07803047a815b3d3909170baa7adcc"
 			;;
 		ppc-musl)
 			checksum+="
-			 3a83a55b11774af98f199ca47bf7429338a2f1e1df5fdbffbdee6bc5ffcae5c9
-			 4b16d538a5a3ff8d85bd0a2bb28896ab170a340f40e40e06a8f59028285d57f6
-			 bbbf7037590fd38c5d4b2e2ac7ddddcc13213d05885d7c1fc2eacbffa4d920f5"
+			 3d5211d6c5cf241b3d3dba343c027d05ff04765e2dd4175168095a86e7c9de22
+			 04a5cdb4f18ccae3eb9059c84adf7a7778484e89c8404ba67cde814019ec5b57
+			 bbb93a757e75d09cb5f6d6dd837e32212acd8888426406352eccf52f329386f1"
 			;;
 	esac
 fi
@@ -127,7 +128,7 @@ _clear_vendor_checksums() {
 
 post_patch() {
 	rm -rf src/llvm-project
-	if [ "$build_option_static_llvm" ]; then
+	if [ "$build_option_bindist" ]; then
 		for x in ${FILESDIR}/patches/static-llvm/*.patch; do
 			msg_normal "Applying patch $x\n"
 			patch -sNp1 -i ${x}
@@ -167,7 +168,11 @@ do_configure() {
 	# if true, the binaries will be built with rpath, so the binaries will be
 	# usable directly from the build directory, this is not desirable for
 	# packaging but is useful when building bootstrap binaries
-	_use_rpath="false"
+	if [ "$build_option_bindist" ]; then
+		_use_rpath="true"
+	else
+		_use_rpath="false"
+	fi
 
 	cat > config.toml <<- EOF
 		[build]
@@ -232,7 +237,7 @@ do_configure() {
 # for it during stage1. Otherwise it attemps to use CFLAGS, which are the CFLAGS
 # of the cross host.
 do_build() {
-	if [ ! "$build_option_static_llvm" ]; then
+	if [ ! "$build_option_bindist" ]; then
 		export LLVM_LINK_SHARED=1
 	fi
 	export RUST_BACKTRACE=1
@@ -268,6 +273,15 @@ do_check() {
 }
 
 do_install() {
+	if [ "$build_option_bindist" ]; then
+		mkdir -p ${XBPS_SRCDISTDIR}/distfiles
+		install -m 0644 \
+			build/dist/rustc-${version}-${RUST_TARGET}.tar.xz \
+			build/dist/rust-std-${version}-${RUST_TARGET}.tar.xz \
+			${XBPS_SRCDISTDIR}/distfiles
+		exit 1
+	fi
+
 	vmkdir usr
 	tar xf build/dist/rustc-${version}-${RUST_TARGET}.tar.gz \
 	 -C "$DESTDIR/usr" --strip-components=2 --exclude=manifest.in
